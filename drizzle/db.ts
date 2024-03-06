@@ -1,5 +1,6 @@
-import { sql } from '@vercel/postgres'
+import { sql as connection } from '@vercel/postgres'
 import { drizzle } from 'drizzle-orm/vercel-postgres'
 
-// Connect to Vercel Postgres
-export const db = drizzle(sql)
+export const db = drizzle(connection)
+
+export { connection }
