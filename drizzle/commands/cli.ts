@@ -1,6 +1,6 @@
-import { seed } from './seed'
-import { migrate } from './migrate'
-import { connection } from '../db'
+import { seed } from '@/drizzle/commands/seed'
+import { migrate } from '@/drizzle/commands/migrate'
+import { connection } from '@/drizzle/db'
 
 import * as dotenv from 'dotenv'
 dotenv.config()

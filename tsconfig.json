@@ -34,15 +34,9 @@
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "drizzle/commands/seed.ts",
         "next.config.js"
     ],
     "exclude": [
         "node_modules"
     ],
-    "ts-node": {
-        "compilerOptions": {
-            "module": "CommonJS",
-        }
-    },
 }

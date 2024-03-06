@@ -1,10 +1,10 @@
-import { db } from '../db'
-import { templateSeed } from '../mock/seed.mock'
-import { TemplatesTable, type Template } from '../schema/templates'
+import { db } from '@/drizzle/db'
+import { templateSeed } from '@/drizzle/mock/seed.mock'
+import { TemplatesTable, type Template } from '@/drizzle/schema/templates'
 
 export async function seed(clear:boolean = false) {
     if (clear) {
-        console.log(`Clearing all items from ${TemplatesTable.name}`)
+        console.log(`Clearing all items from templates`)
         await db.delete(TemplatesTable).returning();
     }
 
@@ -13,5 +13,5 @@ export async function seed(clear:boolean = false) {
         .values(templateSeed)
         .returning()
 
-    console.log(`Seeded ${insertedTemplates.length} items into ${TemplatesTable.name}`)
+    console.log(`Seeded ${insertedTemplates.length} items into templates`)
 }
