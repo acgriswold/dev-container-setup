@@ -36,6 +36,13 @@
       "when": 1710015063813,
       "tag": "0004_redundant_storm",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1710296811138,
+      "tag": "0005_thin_celestials",
+      "breakpoints": true
     }
   ]
 }

@@ -4,17 +4,16 @@
 import { NewTemplate } from '@/drizzle/schema/templates'
 
 export const seed: NewTemplate[] = [
-   {
-        name: "README",
-        extension: ".md",
+    {
+        name: ".gitconfig",
         description: undefined,
-        type: "text/markdown",
-        file: "registry/README.md",
-    },   {
-        name: "test",
-        extension: ".sh",
+        type: "null",
+        file: "registry/.gitconfig",
+    },
+    {
+        name: "key-manager.sh",
         description: undefined,
         type: "application/x-sh",
-        file: "registry/test.sh",
+        file: "registry/.ssh/key-manager.sh",
     },
 ];

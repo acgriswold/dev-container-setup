@@ -12,7 +12,6 @@ export const TemplatesTable = pgTable(
   {
     uuid: uuid('uuid').defaultRandom(),
     name: text('name').notNull(),
-    extension: text('extension'),
     description: text('description'),
     file: text('file').notNull(),
     type: text('type').notNull(),
