@@ -1,0 +1,62 @@
+[branch]
+    autosetuprebase = always
+
+[fetch]
+    prune = true
+
+[alias]
+    hi = !echo "hello"
+
+    main = !git checkout main && git pull origin
+    staging = !git checkout staging && git pull origin staging
+    last = checkout - # or checkout @{-1}
+    
+    # Rebase current branch onto main (change to whatever your main branch of choice is)
+    cm = !git add . && git commit -m
+    update = pull --rebase origin main
+    amend = commit --amend --no-edit
+    undo = reset HEAD~1 --mixed
+    push-up = !git push origin `git branch --show-current`
+
+    # Formatted commit messages
+    # - git formatted-commit {type},{scope},{message}
+    #       "{type}({scope}): {message}"
+    # - git formatted-commit {type},{message}
+    #       "{type}: {message}"
+    formatted-commit = "!f(){ git commit -m \"$(echo $@ | awk -F \",\" '{ gsub(/ /, \"\", $2);if($3==\"\"){print $1\": \"$2} else {print $1\"(\"$2\"): \"$3} }')\";};f"
+    # init = formatted-commit 🎉,
+    # feature = formatted-commit ✨,
+    # fix = formatted-commit 	🐛,
+    # chore = formatted-commit 🧹,
+    # package = formatted-commit 📦,
+    # style = formatted-commit 🎨,
+    # wip = formatted-commit 🚧,
+    # refactor = formatted-commit ♻️,
+    # test = formatted-commit 🧪,
+    init = formatted-commit init,
+    feature = formatted-commit feat,
+    fix = formatted-commit 	fix,
+    chore = formatted-commit chore,
+    package = formatted-commit package,
+    style = formatted-commit style,
+    wip = formatted-commit wip,
+    refactor = formatted-commit refactor,
+    test = formatted-commit test,
+
+    # Delete all merged branches besides checkout/main (change to whatever your main branch of choice is)
+    prune-local-dry = !git branch --merged | awk '!/\\*|main/' | cut -c 2-
+    prune-local = !git prune-local-dry | xargs git branch -d
+    prune-local-force = !git prune-local-dry | xargs git branch -D
+    
+    # Create and checkout branch based on remote HEAD
+    create = "!f(){ git fetch && git checkout -b ${1} origin/HEAD && git branch --unset-upstream; };f"
+    
+    # Stop and remove all changes
+    nah = "!git reset --hard; git clean -df; if [ -d ".git/rebase-apply" ] || [ -d ".git/rebase-merge" ]; then git rebase --abort; fi;"
+    
+    # Single line logs
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s\\ %Cblue[%cn]%Creset" --decorate --numstat
+    ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]%Creset" --decorate --date=relative
+
+    # List all aliases
+    aliases = "!git config -l | grep alias | cut -c 7-"

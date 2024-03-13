@@ -12,6 +12,17 @@ database: Vercel Postgres
 
 Starter kit for scaffolding and configuring my most commonly used dev containers.
 
+### Contribution
+
+An easy way to contribute is to fork the repository and make your pull request!  I've handled maintaining my registry
+by quickly downloading my dotfiles using [degit](https://github.com/Rich-Harris/degit), a great open source project
+for scaffolding created by Rich Harris (creator of Svelte).
+
+```bash
+# downloads and adds new files/ overrides similar files to the registry
+npx degit acgriswold/std-config/.dotfiles/____ registry/ --force
+```
+
 ### Clone and deploy
 
 ```bash
